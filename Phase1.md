@@ -23,6 +23,23 @@ Input: Recorded mobile video
 - Process video frame-by-frame
 - No frame skipping in Phase 1
 
+### Step 2: Object Segmentation (Per Frame)
+Use segmentation to extract the exact shape of the ball in each frame.
+Purpose:
+- Avoid bounding box noise
+- Get precise centroid
+- Handle partial occlusions
+
+### Step 3: Centroid Extraction
+
+From the segmentation mask:
+
+Compute centroid using pixel moments
+
+(
+𝑥
+𝑖
+,
 ## Phase 1 — RtOSE
 
 This document describes Phase 1 of the RtOSE pipeline: extracting the position of an object (a ball) from a recorded mobile video and converting that movement into physical distances and speeds.
@@ -123,45 +140,7 @@ $$v_i = \frac{d_{meters}(i)}{\Delta t}$$
 
 Outputs you may want:
 
-- Instantaneous speed series \\(v_i\\)
+- Instantaneous speed series \(v_i\)
 - Mean speed over the sequence
 - Peak speed
 - Window-averaged speed (sliding window smoothing)
-
-## Implementation notes / contract
-
-- Inputs: video file (with known or extractable FPS), scene reference length (meters)
-- Outputs: per-frame centroid (px), per-frame distance (px and m), per-frame speed (m/s), summary statistics (mean, max)
-- Error modes: missing masks, reference not visible, large perspective distortions
-
-## Quick algorithmic checklist
-
-1. Load video; extract FPS
-2. For each frame:
-   - run segmentation → mask M_i
-   - compute centroid (x_i, y_i)
-3. Compute d_pixels(i) between consecutive centroids
-4. Compute scale from reference and convert to meters
-5. Validate and smooth distances as needed
-6. Compute instantaneous speeds and summary metrics
-
-## How to preview
-
-- Open `Phase1.md` in VS Code and use the Markdown preview (Cmd+Shift+V) to view formatted equations and sections.
-
-## Next steps / improvements
-
-- Add example code snippets (Python + OpenCV) for segmentation, centroid extraction and scaling.
-- Add an example video and expected outputs for testing.
-- Add unit tests for the math (moment calculations, scale conversion) and a small sample pipeline test.
-
----
-
-If you want, I can also:
-
-- add a small Python script demonstrating the full Phase 1 pipeline on a test frame sequence, or
-- add a sample video and a minimal test harness.
-
-
-
-

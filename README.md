@@ -255,66 +255,16 @@ This represents the real-world distance traveled between frames.
 - Distance = 45 × 0.0205 = 0.92 meters
 
 
----
 
-## ⚠️ Assumptions & Constraints
 
-| Assumption | Reason |
-|----------|--------|
-| Fixed camera | Prevents scale variation |
-| Same motion plane | Avoids perspective distortion |
-| High FPS | Improves temporal accuracy |
-| Minimal camera tilt | Reduces depth error |
 
-Violating these assumptions will reduce accuracy.
+
+
+
 
 ---
 
-## ❌ Common Errors
-
-- Using object height instead of ground reference
-- Mixing depth planes (air vs ground)
-- Handheld or shaky camera footage
-- Ignoring perspective shortening
-
----
-
-## ✅ When This Method Works Best
-
-- Cricket ball speed estimation
-- Baseball pitch analysis
-- Vehicle speed on straight roads
-- Athletic performance tracking
-
----
-
-## 🔥 Advantages
-
-- Simple and fast to implement
-- No camera calibration required
-- No depth estimation needed
-- High accuracy under controlled conditions
-
----
-
-## 📌 Limitations
-
-- Requires known reference distance
-- Sensitive to camera movement
-- Assumes planar motion
-
----
-
-## 📍 Conclusion
-
-Reference Object Scaling is the **most reliable starting point** for real-world distance estimation using a single camera.  
-It forms the foundation for speed calculation, trajectory analysis, and advanced motion modeling in computer vision systems.
-
-Once implemented correctly, this method enables accurate speed estimation with minimal computational overhead.
-
----
-
-## ➡️ Next Steps
+##  Next Steps
 
 - Temporal smoothing of distance measurements
 - Speed estimation using FPS
