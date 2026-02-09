@@ -39,5 +39,5 @@ def save_first_2_seconds_frames(video_path, output_dir="frames_2sec", duration_s
 
 
 if __name__ == "__main__":
-    video_path = "/Users/ashithrai/Documents/projects/RtOSE_06/Starter/video/Input_video.mp4"
+    video_path = "/Users/ashithrai/Documents/projects/RtOSE_06/Starter/video/Input_video2.mp4"
     save_first_2_seconds_frames(video_path)
